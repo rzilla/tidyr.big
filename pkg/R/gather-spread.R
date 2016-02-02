@@ -13,8 +13,8 @@ gather_.default =
             .dots =
               c(
                 setdiff(colnames(data), gather_cols),
-                setNames(~col, key_col),
-                setNames(col, value_col)))),
+                setNames(col, key_col),
+                setNames(list(interp(~col, col = as.name(col))), value_col)))),
       dplyr::union)}
 
 formals(gather_.default) = formals(tidyr::gather_)
