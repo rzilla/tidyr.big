@@ -18,7 +18,8 @@ formals(separate_.tbl_HS2) = formals(tidyr::separate_)
 
 unite_.tbl_HS2 =
   function(){
-
-  }
+    stopif(!remove, "remove not supported yet")
+    concat_all = as.call(c(as.name("concat_ws"), as.list(sep), unname(map(from, as.name))))
+    mutate_(data, .dots = setNames(list(interp(~z, z = concat_all)), col))}
 
 formals(unite_.tbl_HS2) = formals(tidyr::unite_)
