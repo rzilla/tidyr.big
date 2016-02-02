@@ -1,0 +1,7 @@
+import(tidyr)
+import(dplyr)
+import(purrr)
+importFrom(lazyeval, interp)
+S3method(separate_, tbl_HS2)
+S3method(gather_, default)
+S3method(spread_, default)
