@@ -1,5 +1,5 @@
 
-gather_.default =
+gather_.tbl_HS2 =
   function() {
     stopif(
       na.rm || convert || factor_key,
@@ -17,9 +17,9 @@ gather_.default =
                 setNames(list(interp(~col, col = as.name(col))), value_col)))),
       dplyr::union)}
 
-formals(gather_.default) = formals(tidyr::gather_)
+formals(gather_.tbl_HS2) = formals(tidyr::gather_)
 
-spread_.default =
+spread_.tbl_HS2 =
   function() {
     new_cols = unlist(collect(distinct_(select_(data, key_col))))
     reduce(
@@ -36,4 +36,4 @@ spread_.default =
             .dots = setNames(value_col, col))),
       inner_join)}
 
-formals(spread_.default) = formals(tidyr::spread_)
+formals(spread_.tbl_HS2) = formals(tidyr::spread_)
