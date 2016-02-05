@@ -7,4 +7,5 @@ S3method(gather_, tbl_HS2)
 S3method(spread_, tbl_HS2)
 S3method(unite_, tbl_HS2)
 S3method(expand_, tbl_HS2)
+S3method(extract_, tbl_HS2)
 
