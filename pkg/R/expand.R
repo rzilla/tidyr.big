@@ -17,4 +17,4 @@ expand_.tbl_HS2 =
     pieces <- lazyeval::lazy_eval(dots, list(nesting = transdata ))
     reduce(pieces, cross_join)}
 
-formals(expand_.tbl_HS2)   = formals(tidyr::expand_)
+formals(expand_.tbl_HS2) = formals(tidyr::expand_)
