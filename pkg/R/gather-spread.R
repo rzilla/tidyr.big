@@ -23,17 +23,23 @@ spread_.tbl_HS2 =
   function() {
     new_cols = unlist(collect(distinct_(select_(data, key_col))))
     reduce(
-      map(
-        new_cols,
-        function(col)
-          rename_(
-            select_(
-              filter_(
-                data,
-                .dots = interp(~key_col == col, key_col = as.name(key_col), col = col)),
-              .dots =
-                interp(~-key_col, key_col = as.name(key_col))),
-            .dots = setNames(value_col, col))),
-      inner_join)}
+      c(
+        list(
+          select_(
+            data,
+            interp(~-key_col, key_col = as.name(key_col)),
+            interp(~-value_col, value_col = as.name(value_col)))),
+        map(
+          new_cols,
+          function(col)
+            rename_(
+              select_(
+                filter_(
+                  data,
+                  .dots = interp(~key_col == col, key_col = as.name(key_col), col = col)),
+                .dots =
+                  interp(~-key_col, key_col = as.name(key_col))),
+              .dots = setNames(value_col, col)))),
+      left_join)}
 
 formals(spread_.tbl_HS2) = formals(tidyr::spread_)
