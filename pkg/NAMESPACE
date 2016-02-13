@@ -1,5 +1,6 @@
 import(tidyr)
 import(dplyr)
+import(dplyr.spark.hive)
 import(purrr)
 importFrom(lazyeval, interp)
 S3method(separate_, tbl_HS2)
