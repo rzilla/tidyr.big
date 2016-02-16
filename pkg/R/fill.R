@@ -1,18 +1,37 @@
 fill_one =
   function(data, fill_col){
     tmp =
-      select(
-        ungroup(
-          collapse(
-            mutate_(
-              group_by(
-                collapse(
-                  mutate_(
-                    data,
-                    gr_gtpncndwyv = interp(~cumsum(if(!is.na(fill_col)) 1 else 0), fill_col = as.name(fill_col)))),
-                gr_gtpncndwyv),
-            .dots = setNames(list(interp(~min(fill_col), fill_col =  as.name(fill_col))), fill_col)))),
-        -gr_gtpncndwyv)
+      data %>%
+      mutate_(
+        gr_gtpncndwyv =
+          interp(
+            ~cumsum(if(!is.na(fill_col)) 1 else 0),
+            fill_col = as.name(fill_col))) %>%
+      collapse %>%
+      group_by(gr_gtpncndwyv) %>%
+      mutate_(
+        .dots =
+          setNames(
+            list(
+              interp(
+                ~min(fill_col),
+                fill_col =  as.name(fill_col))),
+            fill_col)) %>%
+      collapse %>%
+      ungroup %>%
+      select(-gr_gtpncndwyv)
+    # select(
+    #   ungroup(
+    #     collapse(
+    #       mutate_(
+    #         group_by(
+    #           collapse(
+    #             mutate_(
+    #               data,
+    #               gr_gtpncndwyv = interp(~cumsum(if(!is.na(fill_col)) 1 else 0), fill_col = as.name(fill_col)))),
+    #           gr_gtpncndwyv),
+    #       .dots = setNames(list(interp(~min(fill_col), fill_col =  as.name(fill_col))), fill_col)))),
+    #   -gr_gtpncndwyv)
     if(is.null(groups(data)))
       tmp
     else
@@ -28,7 +47,9 @@ fill_many =
 fill_.tbl_HS2 =
   function(){
     fill_many(
-      arrange_(data, interp(~.direction, .direction = as.name(.direction))),
+      arrange_(
+        data,
+        interp(~.direction, .direction = as.name(.direction))),
       fill_cols)}
 
 formals(fill_.tbl_HS2) = formals(tidyr::fill_)
