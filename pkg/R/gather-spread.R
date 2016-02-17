@@ -1,21 +1,24 @@
-
 gather_.tbl_HS2 =
   function() {
-    stopif(
-      na.rm || convert || factor_key,
-      "Not supported yet")
-    reduce(
-      map(
-        gather_cols,
-        function(col)
-          transmute_(
-            .data = data,
-            .dots =
-              c(
-                setdiff(colnames(data), gather_cols),
-                setNames(col, key_col),
-                setNames(list(interp(~col, col = as.name(col))), value_col)))),
-      dplyr::union)}
+    stopif(convert || factor_key, "Not supported yet")
+    tmp =
+      reduce(
+        map(
+          gather_cols,
+          function(col)
+            transmute_(
+              .data = data,
+              .dots =
+                c(
+                  setdiff(colnames(data), gather_cols),
+                  setNames(col, key_col),
+                  setNames(
+                    list(interp(~col, col = as.name(col))), value_col)))),
+        dplyr::union)
+    if(na.rm)
+      filter_(tmp, interp(~!is.null(value_col), value_col = as.name(value_col)))
+    else
+      tmp}
 
 formals(gather_.tbl_HS2) = formals(tidyr::gather_)
 
