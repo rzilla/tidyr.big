@@ -6,7 +6,9 @@ separate_.tbl_HS2 =
     if(is.numeric(sep)){
       sep = as.integer(c(0, sep)) + 1
       len = diff(sep)
-      stopif(length(sep) != length(into), "Number of split points should be one less than new cols")
+      stopif(
+        length(sep) != length(into),
+        "Number of split points should be one less than new cols")
       tmp =
         mutate_(
           data,
@@ -21,7 +23,11 @@ separate_.tbl_HS2 =
                       col = as.name(col),
                       sepi = sep[i],
                       len = len[i])),
-                list(interp(~substr(col, sep), col = as.name(col), sep = sep[length(sep)]))),
+                list(
+                  interp(
+                    ~substr(col, sep),
+                    col = as.name(col),
+                    sep = sep[length(sep)]))),
               into))}
     else {
       sep  = gsub(x = sep, pattern = "\\\\", replacement = "\\\\\\\\")
@@ -29,7 +35,10 @@ separate_.tbl_HS2 =
         collapse(
           mutate_(
             data,
-            .dots = setNames(list(interp(~split(col, sep), col = as.name(col))), "pjezgdwlsd")))
+            .dots =
+              setNames(
+                list(interp(~split(col, sep), col = as.name(col))),
+                "pjezgdwlsd")))
       tmp =
         mutate_(
           tmp,
@@ -55,7 +64,12 @@ extract_.tbl_HS2 =
         .dots =
           setNames(
             map(
-              seq_along(into), function(i) interp(~regexp_extract(col, regex, j), col = as.name(col), j = as.integer(i))),
+              seq_along(into),
+              function(i)
+                interp(
+                  ~regexp_extract(col, regex, j),
+                  col = as.name(col),
+                  j = as.integer(i))),
             into))
     if(remove)
       select_(tmp, interp(~-col, col = as.name(col)))
@@ -67,7 +81,8 @@ formals(extract_.tbl_HS2) = formals(tidyr::extract_)
 unite_.tbl_HS2 =
   function(){
     stopif(!remove, "remove not supported yet")
-    concat_all = as.call(c(as.name("concat_ws"), as.list(sep), unname(map(from, as.name))))
+    concat_all =
+      as.call(c(as.name("concat_ws"), as.list(sep), unname(map(from, as.name))))
     mutate_(data, .dots = setNames(list(interp(~z, z = concat_all)), col))}
 
 formals(unite_.tbl_HS2) = formals(tidyr::unite_)
