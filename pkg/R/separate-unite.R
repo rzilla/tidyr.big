@@ -32,21 +32,18 @@ separate_.tbl_HS2 =
     else {
       sep  = gsub(x = sep, pattern = "\\\\", replacement = "\\\\\\\\")
       tmp =
-        collapse(
-          mutate_(
-            data,
-            .dots =
-              setNames(
-                list(interp(~split(col, sep), col = as.name(col))),
-                "pjezgdwlsd")))
-      tmp =
         mutate_(
-          tmp,
+          data,
+          .dots =
+            setNames(
+              list(interp(~split(col, sep), col = as.name(col))),
+              "pjezgdwlsd")) %>%
+        mutate_(
           .dots =
             setNames(
               map(seq_along(into), function(i) interp(~pjezgdwlsd[j], j = i - 1)),
-              into))
-      .dots = list(~-pjezgdwlsd)}
+              into)) %>%
+        select(-pjezgdwlsd)}
     if(remove)
       select_(tmp, interp(~-col, col = as.name(col)))
     else
