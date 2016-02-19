@@ -55,7 +55,7 @@ spread_.tbl_HS2 =
       summarize_(
         .dots =
             list(
-              valuemap =
+              wswreyxfuo =
                 interp(
                   ~collect(key_col, value_col),
                   key_col = as.name(key_col),
@@ -67,7 +67,7 @@ spread_.tbl_HS2 =
               map(
                 new_cols,
                 function(col)
-                  interp(~valuemap[col], col = col)),
+                  interp(~wswreyxfuo[col], col = col)),
               new_cols)))}
 
 formals(spread_.tbl_HS2) = formals(tidyr::spread_)
