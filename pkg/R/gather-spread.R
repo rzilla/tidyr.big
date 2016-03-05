@@ -63,7 +63,7 @@ formals(gather_.tbl_HS2) = formals(tidyr::gather_)
 # I am going to keep it around
 spread_.tbl_sql =
   function() {
-    new_cols = unlist(collect(distinct_(select_(data, key_col))))
+    new_cols = unlist(collect(distinct_(collapse(select_(data, key_col)))))
     reduce(
       c(
         list(
@@ -89,8 +89,10 @@ formals(spread_.tbl_sql) = formals(tidyr::spread_)
 spread_.tbl_HS2 =
   function() {
     other_cols = setdiff(colnames(data), c(key_col, value_col))
-    new_cols = unlist(collect(distinct_(select_(data, key_col))))
+    new_cols = unlist(collect(distinct_(collapse(select_(data, key_col)))))
+    # collapse needed because of dplyr/#935
     data %>%
+      collapse %>% # workaround for some variable handling bug
       group_by_(.dots = other_cols) %>%
       summarize_(
         .dots =
