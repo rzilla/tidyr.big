@@ -1,8 +1,8 @@
 Package: tidyr.big
 Type: Package
 Title: Scalable Data Manipulation Via Spark
-Version: 0.0.0
-Date: 2016-02-01
+Version: 0.1.0
+Date: 2016-03-07
 Authors@R: c(
   person("Per Data LLC", email = "antonio@piccolboni.info", role = c("aut", "cre", "cph")))
 Description: A scalable version of tidyr
