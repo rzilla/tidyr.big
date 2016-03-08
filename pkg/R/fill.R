@@ -8,7 +8,7 @@ fill_one =
             ~cumsum(if(!is.na(fill_col)) 1L else 0L),
             fill_col = as.name(fill_col))) %>%
       collapse %>%
-      group_by(gr_gtpncndwyv) %>%
+      group_by_("gr_gtpncndwyv") %>%
       mutate_(
         .dots =
           setNames(
