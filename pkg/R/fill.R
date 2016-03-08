@@ -20,18 +20,6 @@ fill_one =
       collapse %>%
       ungroup %>%
       select(-gr_gtpncndwyv)
-    # select(
-    #   ungroup(
-    #     collapse(
-    #       mutate_(
-    #         group_by(
-    #           collapse(
-    #             mutate_(
-    #               data,
-    #               gr_gtpncndwyv = interp(~cumsum(if(!is.na(fill_col)) 1 else 0), fill_col = as.name(fill_col)))),
-    #           gr_gtpncndwyv),
-    #       .dots = setNames(list(interp(~min(fill_col), fill_col =  as.name(fill_col))), fill_col)))),
-    #   -gr_gtpncndwyv)
     if(is.null(groups(data)))
       tmp
     else
