@@ -5,7 +5,7 @@ fill_one =
       mutate_(
         gr_gtpncndwyv =
           interp(
-            ~cumsum(if(!is.na(fill_col)) 1L else 0L),
+            ~cumsum(if(!is.null(fill_col)) 1L else 0L), #workaround for dplyr/#1695
             fill_col = as.name(fill_col))) %>%
       collapse %>%
       group_by_("gr_gtpncndwyv") %>%
