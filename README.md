@@ -31,3 +31,7 @@ brickhouse.extension(src)
 Now you can use `gather` and `spread` and other `tidyr` functions on tables from that source.
 
 
+
+The current version is 0.1.0 .
+
+

@@ -38,4 +38,15 @@ brickhouse.extension(src)
 
 Now you can use `gather` and `spread` and other `tidyr` functions on tables from that source.
 
+```{r, echo=FALSE}
+library(httr)
+library(purrr)
+tags = content(GET("https://api.github.com/repos/rzilla/tidyr.big/tags"))
+version = grep(pattern = "^\\d+\\.\\d+\\.\\d+$", x = map(tags, "name"), value = TRUE)[[1]]
+```
+
+```{r, echo=FALSE, results='asis'}
+cat("The current version is", version, ".")
+```
+
 
