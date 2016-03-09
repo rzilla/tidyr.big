@@ -38,6 +38,7 @@ gather_.tbl_HS2 =
       mutate_(
         pclctsdoud =
           interp(~explode(map_key_values(map_call)), map_call = map_call)) %>%
+      collapse %>%
       mutate_(
         .dots =
           setNames(
