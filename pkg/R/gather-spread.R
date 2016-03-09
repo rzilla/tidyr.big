@@ -113,6 +113,7 @@ spread_.tbl_HS2 =
                 new_cols,
                 function(col)
                   interp(~wswreyxfuo[col], col = col)),
-              new_cols)))}
+              new_cols))) %>%
+      collapse}
 
 formals(spread_.tbl_HS2) = formals(tidyr::spread_)
