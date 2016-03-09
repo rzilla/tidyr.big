@@ -5,7 +5,7 @@ Version: 0.1.0
 Date: 2016-03-07
 Authors@R: c(
   person("Per Data LLC", email = "antonio@piccolboni.info", role = c("aut", "cre", "cph")))
-Description: A scalable version of tidyr
+Description: A scalable version of tidyr, needs additional words to appease R.
 URL: https://github.com/rzilla/tidyr.big
 License: Apache License(== 2.0)
 Imports: tidyr, dplyr, purrr, lazyeval, dplyr.spark.hive
