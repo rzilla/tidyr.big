@@ -4,7 +4,7 @@ separate_.tbl_HS2 =
       convert || extra != "warn" || fill != "warn",
       "additional arguments not supported yet")
     if(is.numeric(sep)){
-      sep = as.integer(c(0, sep)) + 1
+      sep = as.integer(c(0L, sep)) + 1L
       len = diff(sep)
       stopif(
         length(sep) != length(into),
@@ -41,7 +41,7 @@ separate_.tbl_HS2 =
         mutate_(
           .dots =
             setNames(
-              map(seq_along(into), function(i) interp(~pjezgdwlsd[j], j = i - 1)),
+              map(seq_along(into), function(i) interp(~pjezgdwlsd[j], j = i - 1L)),
               into)) %>%
         select(-pjezgdwlsd)}
     if(remove)
