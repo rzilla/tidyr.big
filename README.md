@@ -34,4 +34,8 @@ Now you can use `gather` and `spread` and other `tidyr` functions on tables from
 
 The current version is 0.1.0 .
 
+## Feedback
+
+Please report problem and suggest features by submitting an [issue](https://github.com/rzilla/tidyr.big/issues). You may also want to check current issues for known problems. More general open ended discussion can take place on the [rzilla forum](https://groups.google.com/forum/#!forum/rzilla)
+
 

@@ -49,4 +49,8 @@ version = grep(pattern = "^\\d+\\.\\d+\\.\\d+$", x = map(tags, "name"), value = 
 cat("The current version is", version, ".")
 ```
 
+## Feedback
+
+Please report problem and suggest features by submitting an [issue](https://github.com/rzilla/tidyr.big/issues). You may also want to check current issues for known problems. More general open ended discussion can take place on the [rzilla forum](https://groups.google.com/forum/#!forum/rzilla)
+
 
