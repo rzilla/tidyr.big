@@ -8,5 +8,5 @@ Authors@R: c(
 Description: A scalable version of tidyr, needs additional words to appease R.
 URL: https://github.com/rzilla/tidyr.big
 License: Apache License(== 2.0)
-Imports: tidyr, dplyr, purrr, lazyeval, dplyr.spark.hive
+Imports: tidyr, dplyr, purrr, lazyeval, dplyr.spark.hive (>= 0.6.0)
 Suggests: quickcheck
