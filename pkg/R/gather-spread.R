@@ -53,10 +53,11 @@ gather_.tbl_HS2 =
           setNames(
             list(~rqdrqgleiu, ~xzcpbifzwp),
             c(key_col, value_col)))
-    if(na.rm)
-      filter_(tmp, interp(~!is.null(value_col), value_col = as.name(value_col)))
-    else
-      tmp}
+    collapse(
+      if(na.rm)
+        filter_(tmp, interp(~!is.null(value_col), value_col = as.name(value_col)))
+      else
+        tmp)}
 
 formals(gather_.tbl_HS2) = formals(tidyr::gather_)
 
