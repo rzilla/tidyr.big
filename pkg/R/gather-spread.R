@@ -69,10 +69,11 @@ spread_.tbl_sql =
     reduce(
       c(
         list(
+          distinct_(
           select_(
             data,
             interp(~-key_col, key_col = as.name(key_col)),
-            interp(~-value_col, value_col = as.name(value_col)))),
+            interp(~-value_col, value_col = as.name(value_col))))),
         map(
           new_cols,
           function(col)
